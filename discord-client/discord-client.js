@@ -1,12 +1,15 @@
 import dotenv from "dotenv";
-import Discord, {GatewayIntentBits} from "discord.js";
-import ApexLegendsStatusClient from "../apex-legends-status-client/als-client.js"
+import Discord, { GatewayIntentBits } from "discord.js";
+import ApexLegendsStatusClient from "../apex-legends-status-client/als-client.js";
 
 dotenv.config();
 
 export default class DiscordClient {
   constructor(clientToken) {
-    this.apexClient = new ApexLegendsStatusClient(process.env.APEX_BASE_URL, process.env.APEX_API_AUTHKEY)
+    this.apexClient = new ApexLegendsStatusClient(
+      process.env.APEX_BASE_URL,
+      process.env.APEX_API_AUTHKEY
+    );
     this.clientToken = clientToken;
     this.client = new Discord.Client({
       intents: [
@@ -36,9 +39,15 @@ export default class DiscordClient {
   async monitorMessages() {
     this.client.on("messageCreate", async (msg) => {
       if (msg.content === "!whichmap") {
-        const currentMapDetails = await this.apexClient.getCurrentMap()
-        const formattedMsg = this.apexClient.formatMessage(currentMapDetails.data)
-        msg.reply(formattedMsg)
+        const currentMapDetails = await this.apexClient.getCurrentMap();
+        if (currentMapDetails.success) {
+          const formattedMsg = this.apexClient.formatMessage(
+            currentMapDetails.msg.data
+          );
+          msg.reply(formattedMsg);
+        }else{
+          console.log("Error")
+        }
       }
     });
   }

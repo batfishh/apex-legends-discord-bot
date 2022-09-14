@@ -12,16 +12,16 @@ export default class ApexLegendsStatusClient {
     try {
       mapApiResponse = await this.apiRequestInstance.get("/maprotation");
     } catch (e) {
-      console.log("Apex API error");
+      return {successs: false}
     }
-    return mapApiResponse;
+    return {success : true, msg : mapApiResponse};
   }
 
   formatMessage(msg) {
-    const currentMapName = msg.current.map;
-    const nextMapName = msg.next.map;
-    const timeleftInSecs = msg.current.remainingSecs;
-    const timeleftInMins = msg.current.remainingMins;
+    const currentMapName = msg?.current?.map;
+    const nextMapName = msg?.next?.map;
+    const timeleftInSecs = msg?.current?.remainingSecs;
+    const timeleftInMins = msg?.current?.remainingMins;
     const res =
       timeleftInMins === 0
         ? `Current map is : ${currentMapName}\nEnding in ${timeleftInSecs} seconds.\nNext map : ${nextMapName}`
