@@ -30,8 +30,8 @@ export default class ApexLegendsStatusClient {
     const timeleftInMins = msg?.current?.remainingMins;
     const res =
       timeleftInMins === 0
-        ? `Current map is : ${customMapNames[currentMapCode]}\nEnding in ${timeleftInSecs} seconds.\nNext map : ${nextMapCode}`
-        : `Current map is : ${customMapNames[currentMapCode]}\nEnding in ${timeleftInMins} minutes.\nNext map : ${nextMapCode}`;
+        ? `Current map is : ${customMapNames[currentMapCode]}\nEnding in ${timeleftInSecs} seconds.\nNext map : ${customMapNames[nextMapCode]}`
+        : `Current map is : ${customMapNames[currentMapCode]}\nEnding in ${timeleftInMins} minutes.\nNext map : ${customMapNames[nextMapCode]}`;
     return res;
   }
 }
