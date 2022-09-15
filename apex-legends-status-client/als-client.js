@@ -24,14 +24,14 @@ export default class ApexLegendsStatusClient {
       "kings_canyon_rotation": "Cringe Canyon",
       "storm_point_rotation": "Shit Point"
     }
-    const currentMapName = msg?.current?.map;
-    const nextMapName = msg?.next?.map;
+    const currentMapCode = msg?.current?.code;
+    const nextMapCode = msg?.next?.code;
     const timeleftInSecs = msg?.current?.remainingSecs;
     const timeleftInMins = msg?.current?.remainingMins;
     const res =
       timeleftInMins === 0
-        ? `Current map is : ${customMapNames[currentMapName]}\nEnding in ${timeleftInSecs} seconds.\nNext map : ${nextMapName}`
-        : `Current map is : ${customMapNames[currentMapName]}\nEnding in ${timeleftInMins} minutes.\nNext map : ${nextMapName}`;
+        ? `Current map is : ${customMapNames[currentMapCode]}\nEnding in ${timeleftInSecs} seconds.\nNext map : ${nextMapCode}`
+        : `Current map is : ${customMapNames[currentMapCode]}\nEnding in ${timeleftInMins} minutes.\nNext map : ${nextMapCode}`;
     return res;
   }
 }
