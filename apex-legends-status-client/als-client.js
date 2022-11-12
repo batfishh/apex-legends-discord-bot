@@ -22,7 +22,9 @@ export default class ApexLegendsStatusClient {
     const customMapNames = {
       "worlds_edge_rotation": "DROP FAIDE LOL",
       "kings_canyon_rotation": "Cringe Canyon",
-      "storm_point_rotation": "Shit Point"
+      "storm_point_rotation": "Shit Point",
+      "olympus_rotation": "Olympus, Truly one of the maps of all time",
+      "broken_moon_rotation": "Broken Moon"
     }
     const currentMapCode = msg?.current?.code;
     const nextMapCode = msg?.next?.code;
